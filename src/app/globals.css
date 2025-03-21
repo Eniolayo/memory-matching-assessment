@@ -24,3 +24,32 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Card flipping */
+.test-flip-card {
+  position: relative;
+  background: transparent;
+  transform-style: preserve-3d;
+  perspective: 2000px;
+}
+
+.test-front-card,
+.test-back-card {
+  backface-visibility: hidden;
+  transition: transform 1s;
+}
+
+.test-back-card {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transform: rotateY(180deg); /* -180deg to flip direction */
+}
+
+.test-flip-card.flipped .test-front-card {
+  transform: rotateY(-180deg); /* 180deg to flip direction */
+}
+
+.test-flip-card.flipped .test-back-card {
+  transform: rotateY(0deg);
+}
