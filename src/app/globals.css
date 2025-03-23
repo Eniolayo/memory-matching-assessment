@@ -3,11 +3,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-100: #d34829;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary-100: var(--primary-100);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -51,5 +53,31 @@ body {
 }
 
 .test-flip-card.flipped .test-back-card {
+  transform: rotateY(0deg);
+}
+
+/* Card flipping utilities */
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.perspective-2000 {
+  perspective: 2000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Apply flipping animation when the card is flipped */
+.flipped .backface-hidden:first-child {
+  transform: rotateY(-180deg);
+}
+
+.flipped .backface-hidden:last-child {
   transform: rotateY(0deg);
 }
