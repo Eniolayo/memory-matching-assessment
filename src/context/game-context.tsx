@@ -1,13 +1,14 @@
 "use client";
 
-import { CardType } from "@/components/card";
 import {
   createContext,
-  useContext,
-  useReducer,
   type ReactNode,
   useCallback,
+  useContext,
+  useReducer,
 } from "react";
+
+import { CardType } from "@/components/card";
 
 // Number of pairs in the game
 const PAIRS_COUNT = 8;

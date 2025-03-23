@@ -1,11 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+
+import { STORAGE_KEYS } from "@/config/constant";
+import { GameProvider, useGame } from "@/context/game-context";
+
 import GameBoard from "./game-board";
 import GameControls from "./game-controls";
 import ResultsScreen from "./results-screen";
-import { GameProvider, useGame } from "@/context/game-context";
-import { STORAGE_KEYS } from "@/config/constant";
 
 // Wrapper component that provides the game context
 export default function MemoryGame() {
@@ -87,23 +89,3 @@ function MemoryGameContent() {
     </div>
   );
 }
-
-// // Utility function to shuffle an array using Fisher-Yates (Knuth) Shuffle
-// const shuffleArray = <T,>(array: T[]): T[] => {
-//   const shuffled = [...array]; // Clone to avoid mutating the original array
-//   for (let i = shuffled.length - 1; i > 0; i--) {
-//     const j = Math.floor(Math.random() * (i + 1));
-//     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Swap
-//   }
-//   return shuffled;
-// };
-
-// // Function to generate a shuffled board with unique images
-// const generateShuffledBoard = async (): Promise<string[]> => {
-//   const uniqueImages = Array.from(
-//     { length: 8 },
-//     (_, i) => `https://picsum.photos/200?random=${i + 1}`
-//   );
-//   const pairedImages = [...uniqueImages, ...uniqueImages]; // Each image appears twice
-//   return shuffleArray(pairedImages);
-// };

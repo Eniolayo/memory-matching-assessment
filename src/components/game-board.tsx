@@ -1,8 +1,10 @@
 "use client";
 
 import { memo } from "react";
-import Card from "./card";
+
 import { useGame } from "@/context/game-context";
+
+import Card from "./card";
 
 function GameBoard() {
   const { cards, flippedCards, matchedCards, handleCardClick } = useGame();

@@ -80,7 +80,7 @@ export default [
       // "sonarjs/concise-regex": "off",
       // "sonarjs/no-nested-functions": "off",
       // "sonarjs/unused-import": "off",
-
+      "sonarjs/pseudo-random": "warn",
       // Turn off eslint-react-hooks-extra rule
       "@eslint-react/hooks-extra/no-direct-set-state-in-use-effect": "off",
 
