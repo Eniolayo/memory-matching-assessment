@@ -46,15 +46,26 @@ Don't worry if you're not familiar with all of these! The README will explain th
 The project is organized into several key directories:
 
 ```
-src/
-├── components/     # React components
-│   ├── Card/      # Card component and related files
-│   ├── Board/     # Game board component
-│   └── Stats/     # Statistics and score display
-├── hooks/         # Custom React hooks
-├── types/         # TypeScript type definitions
-├── utils/         # Helper functions and game logic
-└── pages/         # Next.js pages and API routes
+    src/
+    ├── app/               # Next.js app router files
+    │   ├── layout.tsx     # Root layout for the app
+    │   └── page.tsx       # Home page
+    ├── components/        # React components
+    │   ├── card.tsx       # Card component
+    │   ├── game-board.tsx # Game board component
+    │   ├── game-controls.tsx # Game controls component
+    │   ├── memory-game.tsx # Main game component
+    │   └── results-screen.tsx # Results screen component
+    ├── config/            # Configuration files
+    │   └── constant.ts    # Constants used in the app
+    ├── context/           # React context for game state
+    │   └── game-context.tsx # Game context provider
+    ├── store/             # State management
+    │   └── gameReducer.ts  # Game state reducer & types
+    └── __tests__/         # Test files
+        ├── integration/   # Integration tests
+        └── unit/          # Unit tests
+
 ```
 
 ## 🎲 How the Game Works
@@ -76,7 +87,7 @@ src/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/memory-matching-assessment.git
+git clone https://github.com/Eniolayo/memory-matching-assessment.git
 cd memory-matching-assessment
 ```
 
@@ -96,7 +107,7 @@ npm run dev
 
 ## 🧪 Testing
 
-We use Jest and React Testing Library for testing. To run tests:
+I used Jest and React Testing Library for testing. To run tests:
 
 ```bash
 # Run all tests

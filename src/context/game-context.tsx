@@ -8,7 +8,7 @@ import {
   useReducer,
 } from "react";
 
-import { gameReducer, GameState, initialState } from "@/store/gameState";
+import { gameReducer, GameState, initialState } from "@/store/gameReducer";
 
 // Create the context
 interface GameContextType extends GameState {
