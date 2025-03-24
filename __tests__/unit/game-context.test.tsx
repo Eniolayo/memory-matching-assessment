@@ -1,7 +1,8 @@
-import { renderHook, act } from "@testing-library/react";
-import { GameProvider, useGame } from "@/context/game-context";
+import { describe, expect, it } from "@jest/globals";
+import { act, renderHook } from "@testing-library/react";
 import type { ReactNode } from "react";
-import { describe, it, expect } from "@jest/globals";
+
+import { GameProvider, useGame } from "@/context/game-context";
 
 // Wrapper component for the hook test
 const wrapper = ({ children }: { children: ReactNode }) => (

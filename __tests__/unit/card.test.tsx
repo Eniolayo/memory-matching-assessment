@@ -1,8 +1,9 @@
 "use client";
 
-import { render, screen, fireEvent } from "@testing-library/react";
+import { describe, expect, it } from "@jest/globals";
+import { fireEvent, render, screen } from "@testing-library/react";
+
 import Card from "@/components/card";
-import { describe, it, expect } from "@jest/globals";
 
 describe("Card Component", () => {
   const mockCard = {

@@ -1,7 +1,8 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { describe, expect, it } from "@jest/globals";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+
 import MemoryGame from "@/components/memory-game";
 import { GameProvider } from "@/context/game-context";
-import { describe, it, expect } from "@jest/globals";
 
 // Mock the cards to have predictable pairs for testing
 jest.mock("@/context/game-context", () => {

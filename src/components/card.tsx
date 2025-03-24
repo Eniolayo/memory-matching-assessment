@@ -30,9 +30,14 @@ function Card({ card, isFlipped, isMatched, onClick }: CardProps) {
       >
         {/* Card Back (Question Mark) */}
         <div
-          className={`bg-primary absolute flex h-full w-full items-center justify-center rounded-lg transition-transform duration-1000 backface-hidden`}
+          className={`bg-primary absolute flex h-full w-full flex-col items-center justify-center rounded-lg transition-transform duration-1000 backface-hidden`}
         >
           <div className="text-4xl text-gray-800">?</div>
+          <img
+            src="/iRecharge-logo.svg"
+            alt="iRecharge-logo"
+            className="absolute top-1/2 left-1/2 size-32 -translate-x-1/2 -translate-y-1/2 transform opacity-25"
+          />
         </div>
 
         {/* Card Front (Image) */}
@@ -56,5 +61,4 @@ function Card({ card, isFlipped, isMatched, onClick }: CardProps) {
   );
 }
 
-// Memoize the component to prevent unnecessary re-renders
 export default memo(Card);
