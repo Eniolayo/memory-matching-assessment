@@ -1,4 +1,3 @@
-"use client";
 import { Icon } from "@iconify/react";
 
 type GameControlsProps = {
@@ -20,7 +19,7 @@ export default function GameControls({
           <p className="text-2xl font-bold">{clicks}</p>
         </div>
 
-        {bestScore !== null && (
+        {typeof window !== "undefined" && bestScore !== null && (
           <div className="text-center sm:text-left">
             <p className="border-b text-sm text-gray-900">Best Score</p>
             <p className="text-2xl font-bold">{bestScore}</p>
@@ -28,7 +27,10 @@ export default function GameControls({
         )}
       </div>
 
-      <button onClick={onRestart} className="flex items-center gap-2">
+      <button
+        onClick={onRestart}
+        className="text-primary-100 flex items-center gap-2"
+      >
         <Icon icon="mynaui:refresh" width="24" height="24" />
         Restart Game
       </button>

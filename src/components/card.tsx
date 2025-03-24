@@ -52,7 +52,7 @@ function Card({ card, isFlipped, isMatched, onClick }: CardProps) {
               fill
               sizes="(max-width: 768px) 100vw, 25vw"
               className="object-cover"
-              priority={false}
+              priority={true}
             />
           )}
         </div>
