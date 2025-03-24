@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { STORAGE_KEYS } from "@/config/constant";
 import { GameProvider, useGame } from "@/context/game-context";
@@ -20,41 +20,33 @@ export default function MemoryGame() {
 
 // Inner component that consumes the game context
 function MemoryGameContent() {
-  // State to track if we've already processed this game completion
-  const [processedGameId, setProcessedGameId] = useState<string | null>(null);
-  // State for controlling results screen visibility
-  const [showResults, setShowResults] = useState(false);
-  // Lazy initialization of bestScore using a function to run only once on mount
-  const [bestScore, setBestScore] = useState<number | null>(() => {
-    // This runs only on the initial render
-    const storedBestScore =
-      typeof window !== "undefined"
-        ? localStorage.getItem(STORAGE_KEYS.BEST_SCORE)
-        : null;
-    return storedBestScore ? Number.parseInt(storedBestScore, 10) : null;
-  });
-
   const { clicks, isGameComplete, resetGame, gameStartTime, gameEndTime } =
     useGame();
-  // Generate a unique ID for the current game completion state
-  const currentGameId = isGameComplete ? `${clicks}-${gameEndTime}` : null;
 
-  // Handle game completion logic
-  if (isGameComplete && currentGameId && currentGameId !== processedGameId) {
-    // Update best score if needed
-    if (bestScore === null || clicks < bestScore) {
-      localStorage.setItem(STORAGE_KEYS.BEST_SCORE, clicks.toString());
-      setBestScore(clicks);
+  const [bestScore, setBestScore] = useState<number | null>(null);
+  const [showResults, setShowResults] = useState(false);
+
+  // Load best score from localStorage on mount
+  useEffect(() => {
+    const storedBestScore = localStorage.getItem(STORAGE_KEYS.BEST_SCORE);
+    if (storedBestScore) {
+      setBestScore(Number.parseInt(storedBestScore, 10));
     }
+  }, []);
 
-    // Mark this game completion as processed
-    setProcessedGameId(currentGameId);
-
-    // Show results screen after a delay
-    setTimeout(() => {
-      setShowResults(true);
-    }, 500);
-  }
+  // Update best score when game is complete
+  useEffect(() => {
+    if (isGameComplete) {
+      if (bestScore === null || clicks < bestScore) {
+        localStorage.setItem(STORAGE_KEYS.BEST_SCORE, clicks.toString());
+        setBestScore(clicks);
+      }
+      // Show results screen after a short delay
+      setTimeout(() => {
+        setShowResults(true);
+      }, 500);
+    }
+  }, [isGameComplete, clicks, bestScore]);
 
   const handleRestart = () => {
     setShowResults(false);
